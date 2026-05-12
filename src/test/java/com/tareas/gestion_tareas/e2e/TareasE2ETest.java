@@ -49,6 +49,16 @@ class TareasE2ETest {
         assertThat(driver.getTitle()).contains("Tareas");
     }
 
+    @Test
+    void login_redirigeATareas() {
+        driver.get("http://localhost:8080/login");
+        LoginPage login = new LoginPage(driver);
+        login.escribirUsuario("demo");
+        login.escribirClave("demo");
+        login.ingresar();
+        assertThat(driver.getTitle()).contains("Tareas");
+    }
+
     @AfterEach
     void tearDown() {
         if (driver != null) {

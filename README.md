@@ -53,6 +53,48 @@ Para validar cobertura con JaCoCo:
 mvn jacoco:check
 ```
 
+## Pruebas E2E con Selenium
+
+Requisitos:
+
+- Google Chrome instalado
+- Java 17 y Maven 3.9+
+
+Ejecucion (modo headless):
+
+```bash
+./mvnw test -Dtest=TareasE2ETest
+```
+
+## Pruebas API con Postman y Newman
+
+Coleccion y entornos:
+
+- `postman/ColeccionToDo.json`
+- `postman/env-local.json`
+- `postman/env-ci.json`
+
+Ejecucion con Newman (local):
+
+```bash
+npm install -g newman
+newman run postman/ColeccionToDo.json --environment postman/env-local.json
+```
+
+## Workflow de GitHub Actions
+
+El workflow usa Newman para ejecutar la coleccion en CI:
+
+```bash
+.github/workflows/api-tests.yml
+```
+
+## Evidencias de checkpoints
+
+- Selenium en verde: `docs/selenium-tests.png`
+- Postman Runner en verde: `docs/postman-ruuner.png`
+- GitHub Actions passing: `docs/workflow-github-actions.png`
+
 ## Clases de prueba
 
 - `TareaServiceTest`: pruebas unitarias del servicio con Mockito (`@Mock`, `@InjectMocks`, stubbing y verify).

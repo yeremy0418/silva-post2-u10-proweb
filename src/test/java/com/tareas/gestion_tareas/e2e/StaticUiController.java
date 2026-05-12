@@ -13,6 +13,24 @@ class StaticUiController {
     @RestController
     @RequestMapping("/")
     static class Controller {
+        @GetMapping(value = "/login", produces = MediaType.TEXT_HTML_VALUE)
+        String login() {
+            return "<!doctype html>"
+                + "<html><head><title>Login</title></head>"
+                + "<body>"
+                + "<form method='post'>"
+                + "<input id='input-usuario' name='usuario' />"
+                + "<input id='input-clave' name='clave' type='password' />"
+                + "<button id='btn-ingresar' type='submit'>Ingresar</button>"
+                + "</form>"
+                + "</body></html>";
+        }
+
+        @PostMapping(value = "/login", produces = MediaType.TEXT_HTML_VALUE)
+        String loginPost() {
+            return tareas();
+        }
+
         @GetMapping(value = "/tareas", produces = MediaType.TEXT_HTML_VALUE)
         String tareas() {
             return "<!doctype html>"
