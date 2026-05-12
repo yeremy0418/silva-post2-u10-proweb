@@ -41,6 +41,14 @@ El workflow que ejecuta Newman en CI esta en:
 
 ## Evidencias
 
-- Evidencia 1 (Selenium en verde): `docs/selenium-tests.png`
-- Evidencia 2 (Postman Runner 0 failures): `docs/postman-ruuner.png`
-- Evidencia 3 (GitHub Actions passing): `docs/workflow-github-actions.png`
+- Evidencia 1 (Selenium en verde):
+
+![Selenium tests en verde](docs/selenium-tests.png)
+
+- Evidencia 2 (Postman Runner 0 failures):
+
+![Postman Runner 0 failures](docs/postman-ruuner.png)
+
+- Evidencia 3 (GitHub Actions passing):
+
+![GitHub Actions passing](docs/workflow-github-actions.png)
