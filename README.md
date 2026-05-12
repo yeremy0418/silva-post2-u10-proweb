@@ -1,112 +1,46 @@
 # Gestion de Tareas
 
-Proyecto de ejemplo con pruebas unitarias, de controlador y de repositorio para una API de tareas.
+Proyecto de ejemplo con API de tareas, pruebas E2E con Selenium y coleccion Postman
+para validacion automatizada.
 
 ## Requisitos
 
 - Java 17
 - Maven 3.9+
+- Google Chrome (para Selenium)
+- Node.js 18+ (para Newman)
 
-## Configuracion de pruebas
+## Estructura del repositorio
 
-Las pruebas usan H2 en memoria.
+- `postman/` coleccion y entornos
+- `.github/workflows/` workflow de CI con Newman
+- `src/test/java/com/tareas/gestion_tareas/e2e/` pruebas Selenium y Page Objects
 
-## Estructura del proyecto
+## Ejecutar pruebas E2E (Selenium)
 
-Organizado por capas en `src/main` y `src/test`:
-
-```
-src/
-  main/
-    java/com/tareas/gestion_tareas/
-      controller/
-        TareaController.java
-      exception/
-        GlobalExceptionHandler.java
-      model/
-        Tarea.java
-      repository/
-        TareaRepository.java
-      service/
-        TareaService.java
-      GestionTareasApplication.java
-  test/
-    java/com/tareas/gestion_tareas/
-      controller/
-        TareaControllerTest.java
-      repository/
-        TareaRepositoryTest.java
-      service/
-        TareaServiceTest.java
-      GestionTareasApplicationTests.java
-```
-
-## Como ejecutar pruebas
-
-```bash
-mvn test
-```
-
-Para validar cobertura con JaCoCo:
-
-```bash
-mvn jacoco:check
-```
-
-## Pruebas E2E con Selenium
-
-Requisitos:
-
-- Google Chrome instalado
-- Java 17 y Maven 3.9+
-
-Ejecucion (modo headless):
+Modo headless:
 
 ```bash
 ./mvnw test -Dtest=TareasE2ETest
 ```
 
-## Pruebas API con Postman y Newman
-
-Coleccion y entornos:
-
-- `postman/ColeccionToDo.json`
-- `postman/env-local.json`
-- `postman/env-ci.json`
-
-Ejecucion con Newman (local):
+## Ejecutar Newman localmente
 
 ```bash
 npm install -g newman
 newman run postman/ColeccionToDo.json --environment postman/env-local.json
 ```
 
-## Workflow de GitHub Actions
+## GitHub Actions
 
-El workflow usa Newman para ejecutar la coleccion en CI:
+El workflow que ejecuta Newman en CI esta en:
 
 ```bash
 .github/workflows/api-tests.yml
 ```
 
-## Evidencias de checkpoints
+## Evidencias
 
-- Selenium en verde: `docs/selenium-tests.png`
-- Postman Runner en verde: `docs/postman-ruuner.png`
-- GitHub Actions passing: `docs/workflow-github-actions.png`
-
-## Clases de prueba
-
-- `TareaServiceTest`: pruebas unitarias del servicio con Mockito (`@Mock`, `@InjectMocks`, stubbing y verify).
-- `TareaControllerTest`: pruebas de controlador con `@WebMvcTest`, `MockMvc` y `@MockitoBean`.
-- `TareaRepositoryTest`: pruebas de repositorio con `@DataJpaTest` y `TestEntityManager`.
-
-## Reporte de cobertura
-
-El reporte HTML se genera en `target/site/jacoco/index.html`.
-
-### Captura de cobertura
-
-Reemplaza el siguiente marcador con una imagen del reporte mostrando cobertura >= 70%.
-
-![JaCoCo reporte](docs/jacoco-coverage.png)
+- Evidencia 1 (Selenium en verde): `docs/selenium-tests.png`
+- Evidencia 2 (Postman Runner 0 failures): `docs/postman-ruuner.png`
+- Evidencia 3 (GitHub Actions passing): `docs/workflow-github-actions.png`
